@@ -49,63 +49,63 @@ const Register = () => {
           </div>
           <Input
             nombre="First Name"
-            col="col-6"
+            col={"col-md-6 col-12"}
             id="firstName"
             type="text"
             valorFormulario="firstName"
           />
           <Input
             nombre="Second Name"
-            col="col-6"
+            col={"col-md-6 col-12"}
             id="secondName"
             type="text"
             valorFormulario="secondName"
           />
           <Input
             nombre="Imaginary Nickname"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="imaginaryNickname"
             type="text"
             valorFormulario="imaginaryNickname"
           />
           <Input
             nombre="Favorite SuperHero"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="favoriteSuperHero"
             type="text"
             valorFormulario="favoriteSuperHero"
           />
           <Input
             nombre="Favorite Villain"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="favoriteVillain"
             type="text"
             valorFormulario="favoriteVillain"
           />
           <Input
             nombre="Password"
-            col="col-6"
+            col={"col-md-6 col-12"}
             id="password"
             type="password"
             valorFormulario="password"
           />
           <Input
             nombre="Eye color"
-            col="col-3"
+            col={"col-md-3 col-12"}
             id="eyeColor"
             type="color"
             valorFormulario="eyeColor"
           />
           <Input
             nombre="Hair color"
-            col="col-3"
+            col={"col-md-3 col-12"}
             id="hairColor"
             type="color"
             valorFormulario="hairColor"
           />
           <Input
             nombre="Mail"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="mail"
             type="text"
             valorFormulario="mail"
@@ -113,14 +113,14 @@ const Register = () => {
 
           <Input
             nombre="Age"
-            col="col-2"
+            col={"col-md-2 col-12"}
             id="age"
             type="number"
             valorFormulario="age"
           />
           <Select
             nombre="Favorite Variable"
-            col="col-6"
+            col={"col-md-6 col-12"}
             valores={["Const", "Var", "Let"]}
             id="favoriteVariable"
             desabilitar="Const Let"
@@ -128,7 +128,7 @@ const Register = () => {
           />
           <Select
             nombre="Rate Your Experience with This Form"
-            col="col-12"
+            col={"col-12"}
             valores={["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]}
             id="experienceRate"
             desabilitar=""
@@ -136,35 +136,35 @@ const Register = () => {
           />
           <Input
             nombre="Phone"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="phone"
             type="number"
             valorFormulario="phone"
           />
           <Input
             nombre="Favorite Colour"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="favoriteColour"
             type="color"
             valorFormulario="favoriteColour"
           />
           <Input
             nombre="Birth Day"
-            col="col-4"
+            col={"col-md-4 col-12"}
             id="birthDay"
             type="date"
             valorFormulario="birthDay"
           />
           <Input
             nombre="Name of your computer"
-            col="col-4"
+            col={"col-md-6 col-lg-4 col-12"}
             id="computerName"
             type="text"
             valorFormulario="computerName"
           />
           <Select
             nombre="Variable you hate using the most"
-            col="col-8"
+            col={"col-md-6 col-lg-8 col-12"}
             valores={["Const", "Var", "Let"]}
             id="hatedVariable"
             desabilitar="Var"
@@ -172,7 +172,7 @@ const Register = () => {
           />
           <Select
             nombre="Tabs, spaces, or chaos"
-            col="col-5"
+            col={"col-md-4 col-lg-5 col-12"}
             valores={["Tabs", "Spaces", "Chaos"]}
             id="tabsSpacesChaos"
             desabilitar=""
@@ -180,14 +180,14 @@ const Register = () => {
           />
           <Input
             nombre="If you were a bug, which one would you be?"
-            col="col-7"
+            col={"col-md-8 col-lg-7 col-12"}
             id="bugType"
             type="number"
             valorFormulario="bugType"
           />
           <Select
             nombre="Have you ever apologized to your computer?"
-            col="col-7"
+            col={"col-md-12 col-lg-7 col-12"}
             valores={["Yes", "No", "She’s always to blame"]}
             id="apologizedToComputer"
             desabilitar=""
@@ -195,14 +195,14 @@ const Register = () => {
           />
           <Input
             nombre="Sum up this form in one word"
-            col="col-5"
+            col={"col-lg-5 col-12"}
             id="formSummary"
             type="text"
             valorFormulario="formSummary"
           />
           <Select
             nombre="Rate Your Experience with This Form (Be honest)"
-            col="col-12"
+            col={"col-12"}
             valores={["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"]}
             id="honestExperienceRate"
             desabilitar="12345678"
@@ -210,21 +210,21 @@ const Register = () => {
           />
           <Input
             nombre="IF you were to use a password, what would it be?"
-            col="col-7"
+            col={"col-md-7 col-12"}
             id="potentialPassword"
             type="text"
             valorFormulario="potentialPassword"
           />
           <Input
             nombre="Wich is your favorite number"
-            col="col-5"
+            col={"col-md-5 col-12"}
             id="favoriteNumber"
             type="number"
             valorFormulario="favoriteNumber"
           />
           <Select
             nombre="On a scale of 1 to 10, how much do you love variable var?"
-            col="col-12"
+            col={"col-12"}
             valores={[
               "1",
               "2",
@@ -243,7 +243,7 @@ const Register = () => {
           />
           <Select
             nombre="if you need to use fetch, do you use await or then?"
-            col="col-7"
+            col={"col-md-12 col-lg-7 col-12"}
             valores={["Await", "then"]}
             id="fetchPreference"
             desabilitar=""
@@ -251,7 +251,7 @@ const Register = () => {
           />
           <Select
             nombre="Dark mode or Light mode"
-            col="col-5"
+            col={"col-md-4 col-lg-5 col-12"}
             id="modePreference"
             valores={["Dark mode", "Light mode"]}
             desabilitar=""
@@ -259,28 +259,28 @@ const Register = () => {
           />
           <Input
             nombre="If you didn’t have fingers, how would you program?"
-            col="col-5"
+            col={"col-md-8 col-lg-5 col-12"}
             id="programmingWithoutFingers"
             type="text"
             valorFormulario="programmingWithoutFingers"
           />
           <Input
             nombre="Favorite Day"
-            col="col-3"
+            col={"col-md-3 col-12"}
             id="favoriteDay"
             type="date"
             valorFormulario="favoriteDay"
           />
           <Input
             nombre="Guess the number from 1 to 10 randomly"
-            col="col-4"
+            col={"col-md-9 col-lg-4 col-12"}
             id="randomGuess"
             type="text"
             valorFormulario="randomGuess"
           />
           <Select
             nombre="Which is the worst football team?"
-            col="col-3"
+            col={"col-md-5 col-lg-5 col-12"}
             valores={["Sevilla"]} // esto no es mi culpa, me lo dijo alguien de la clase
             id="worstFootballTeam"
             desabilitar=""
@@ -288,7 +288,7 @@ const Register = () => {
           />
           <Select
             nombre="How long do you think it took you to get here?"
-            col="col-9"
+            col={"col-md-7 col-lg-7 col-12"}
             valores={["1min", "2min", "3min", "4min", "5min", "10min"]}
             id="timeToComplete"
             desabilitar="1min 2min"

@@ -8,7 +8,7 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div>
+    <div className="fondo">
       <Register />
     </div>
   );
