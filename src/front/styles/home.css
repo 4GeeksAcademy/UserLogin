@@ -5,3 +5,32 @@
     one more css for each page that will contain the selected used 
     on that page only (the ones not reused in other pages).
 */
+
+.elemento-transicion-home:hover {
+  cursor: pointer;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
+
+.borde-oscuro {
+  text-shadow: 0 0 15px rgba(0, 0, 0, 0.7);
+}
+.formulario {
+  overflow: hidden;
+  background-color: rgb(245, 244, 244);
+  border-radius: 20px;
+}
+#boton-subir {
+  border-radius: 0 0 2% 2%;
+  width: 100%;
+  background-color: black;
+  color: white;
+  font-size: 25px;
+  font-weight: 900;
+  height: 50px;
+  border: white;
+}
+
+#boton-subir:hover {
+  background-color: rgb(19, 19, 19);
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}

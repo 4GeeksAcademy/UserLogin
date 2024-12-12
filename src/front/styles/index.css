@@ -1,3 +1,33 @@
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */
+
+body {
+  height: auto;
+  background-image: url(https://i.pinimg.com/736x/63/10/88/63108804a9b5e66331b284219a60b745.jpg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.input-valido {
+  box-shadow: 0 0 4px rgba(0, 255, 76, 0.7);
+}
+.input-invalido {
+  box-shadow: 0 0 4px rgba(255, 0, 0, 0.7);
+}
+input.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+select.form-control:focus {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+.Marcado {
+  opacity: 0.5;
+}
+
+.borde-luz {
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.7);
+}
