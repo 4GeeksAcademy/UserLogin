@@ -1,3 +1,6 @@
+from flask_jwt_extended import JWTManager
+
+
 """
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
@@ -55,7 +58,8 @@ def handle_hello():
             worst_football_team=data.get('worstFootballTeam', "Sevilla"),
             time_to_complete=data.get('timeToComplete', "5min")
         )
-        
+        db.session.add(new_user)
+        db.session.commit()
         
 
         return jsonify(new_user.serialize()), 201    
