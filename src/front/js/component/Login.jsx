@@ -1,18 +1,16 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState } from "react";
 import Input from "./Input.jsx";
 import Select from "./Select.jsx";
 import { Toaster, toast } from "sonner";
 import { Context } from "../store/appContext.js";
-import { useNavigate } from "react-router-dom";
 import Register from "./Register.jsx";
 
 const Login = () => {
   const [register, setRegister] = useState(false);
   const { store, actions } = useContext(Context);
-  const navigate = useNavigate();
   const [modoFacil, setModoFacil] = useState(false);
 
-  return register === true ? (
+  return register === true ? ( // comprobamos si el usuario no ha cambiado a register
     <Register />
   ) : (
     <div className="py-3">
@@ -291,15 +289,7 @@ const Login = () => {
             valorFormulario="timeToComplete"
           />
         </div>
-        <button
-          className="w-100"
-          id="boton-subir"
-          onClick={() => {
-            document
-              .querySelector(`#${actions.validarFormulario()}`)
-              .scrollIntoView();
-          }}
-        >
+        <button className="w-100" id="boton-subir">
           Login
         </button>
       </div>

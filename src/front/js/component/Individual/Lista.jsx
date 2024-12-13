@@ -1,5 +1,6 @@
 import React from "react";
 const Lista = () => {
+  //lista que itera todos los valores en el local storage
   return (
     <div className="container w-75">
       <ol class="list-group list-group-numbered">
@@ -13,7 +14,7 @@ const Lista = () => {
                 {value}
               </div>
             </div>
-          ); 
+          );
         })}
       </ol>
     </div>

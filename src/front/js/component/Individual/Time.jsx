@@ -1,5 +1,6 @@
 import React from "react";
 const Time = () => {
+  // Descripcion con el tiempo que el usuario le tomo hacer el formulario
   return (
     <div>
       <span className="Numero-Tiempo">

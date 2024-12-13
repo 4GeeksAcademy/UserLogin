@@ -16,7 +16,7 @@ const Register = () => {
     actions.Tiempo();
   }, []);
 
-  return login === true ? (
+  return login === true ? ( // comprobamos si el usuario no ha cambiado a Login
     <Login />
   ) : (
     <div className="py-3">
