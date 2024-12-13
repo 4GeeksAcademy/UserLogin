@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import Input from "./Input.jsx";
 import Select from "./Select.jsx";
 import { Toaster, toast } from "sonner";
@@ -9,19 +9,12 @@ import Login from "./Login.jsx";
 const Register = () => {
   const [login, setLogin] = useState(false);
   const { store, actions } = useContext(Context);
-  const [inputs, setInputs] = useState(0);
+
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log(inputs);
-    for (let i = 0; i < store.length; i++) {
-      if (store[i] === "") {
-        console.log(inputs);
-        setInputs(inputs + 1);
-      } else {
-      }
-    }
-  }, [store]);
+    actions.Tiempo();
+  }, []);
 
   return login === true ? (
     <Login />
@@ -300,7 +293,7 @@ const Register = () => {
           id="boton-subir"
           onClick={() => {
             document
-              .querySelector(`#${actions.validarFormulario()}`)
+              .querySelector(`#${actions.validarFormulario(navigate)}`)
               .scrollIntoView();
           }}
         >

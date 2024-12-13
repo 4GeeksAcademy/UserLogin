@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
 
 import { Home } from "./pages/home";
+import { Individual } from "./pages/Individual";
 import injectContext from "./store/appContext";
 
 //create your first component
@@ -21,6 +22,7 @@ const Layout = () => {
         <ScrollToTop>
           <Routes>
             <Route element={<Home />} path="/" />
+            <Route element={<Individual />} path="/User" />
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>

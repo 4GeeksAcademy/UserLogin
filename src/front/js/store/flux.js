@@ -3,6 +3,7 @@ import { toast } from "sonner";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
+      tiempo: 0,
       firstName: "",
       secondName: "",
       imaginaryNickname: "",
@@ -13,31 +14,42 @@ const getState = ({ getStore, getActions, setStore }) => {
       hairColor: "",
       mail: "",
       age: 0,
-      favoriteVariable: "Var",
-      experienceRate: "1",
+      favoriteVariable: "",
+      experienceRate: "",
       phone: "",
       favoriteColour: "",
       birthDay: "",
       computerName: "",
-      hatedVariable: "Let",
-      tabsSpacesChaos: "Tabs",
+      hatedVariable: "",
+      tabsSpacesChaos: "",
       bugType: "",
-      apologizedToComputer: "No",
+      apologizedToComputer: "",
       formSummary: "",
-      honestExperienceRate: "1",
+      honestExperienceRate: "",
       potentialPassword: "",
       favoriteNumber: 0,
-      loveForVar: "1",
-      fetchPreference: "Await",
-      modePreference: "Dark mode",
+      loveForVar: "",
+      fetchPreference: "",
+      modePreference: "",
       programmingWithoutFingers: "",
       favoriteDay: "",
       randomGuess: "",
-      worstFootballTeam: "Sevilla",
-      timeToComplete: "1min",
+      worstFootballTeam: "",
+      timeToComplete: "",
     },
     actions: {
       // Use getActions to call a function within a fuction
+
+      Tiempo: () => {
+        const store = getStore();
+        if (store.tiempo != 0) {
+        } else {
+          const intervalo = setInterval(() => {
+            const currentStore = getStore();
+            setStore({ ...currentStore, tiempo: currentStore.tiempo + 1 });
+          }, 1000);
+        }
+      },
 
       modificarFormulario: (nombre, valor) => {
         setStore({ [nombre]: valor });
@@ -47,15 +59,22 @@ const getState = ({ getStore, getActions, setStore }) => {
         datos = await request.json();
 
         respuesta = await fetch(
-          "https://improved-bassoon-g4q7prv4v5xq2p76x-3001.app.github.dev/api/addUser",
+          "https://scaling-tribble-69g4p5x9xv79c7j6-3001.app.github.dev/api/addUser",
           { method: "POST", body: JSON.stringify(datos) }
         );
       },
 
-      validarFormulario: () => {
+      agregarLocalStorage: () => {
+        Object.entries(getStore()).map(([key, value]) => {
+          localStorage.setItem(key, value);
+        });
+      },
+
+      validarFormulario: (pagina) => {
         for (const key in getStore()) {
           if (
             getStore()[key] === "" ||
+            getStore()[key] === "tiempo" ||
             getStore()[key] === 0 ||
             getStore()[key] === null ||
             getStore()[key] === undefined ||
@@ -78,7 +97,10 @@ const getState = ({ getStore, getActions, setStore }) => {
                       toast("sure? :(", {
                         action: {
                           label: "YES",
-                          onClick: () => console.log("Yes let me alone please"), //USAR ESTO PARA REDIRIGIR EL USUARIO Y SUBIR TODO A LA BASE DE DATOS
+                          onClick: () => {
+                            pagina("/User");
+                            getActions().agregarLocalStorage();
+                          },
                         },
                       }),
                   },
@@ -86,8 +108,6 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
           }
         );
-
-        // Si todos los campos están validados
       },
 
       getMessage: async () => {

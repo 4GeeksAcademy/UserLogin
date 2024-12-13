@@ -9,20 +9,8 @@ import Register from "./Register.jsx";
 const Login = () => {
   const [register, setRegister] = useState(false);
   const { store, actions } = useContext(Context);
-  const [inputs, setInputs] = useState(0);
   const navigate = useNavigate();
   const [modoFacil, setModoFacil] = useState(false);
-
-  useEffect(() => {
-    console.log(inputs);
-    for (let i = 0; i < store.length; i++) {
-      if (store[i] === "") {
-        console.log(inputs);
-        setInputs(inputs + 1);
-      } else {
-      }
-    }
-  }, [store]);
 
   return register === true ? (
     <Register />

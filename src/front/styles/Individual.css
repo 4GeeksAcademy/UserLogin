@@ -1,0 +1,21 @@
+.Numero-Tiempo {
+  font-weight: 900;
+  color: white;
+  font-size: 150px;
+  text-shadow: 0 0 10px white;
+}
+.fondo-item-lista {
+  overflow: hidden;
+  background-color: rgb(245, 244, 244, 0.95);
+}
+.contenido-item-lista {
+  font-size: 20px;
+  font-weight: 900;
+}
+.fondo-key {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.fondo-value {
+  background-color: rgb(245, 244, 244, 0.85);
+}

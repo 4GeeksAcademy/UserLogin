@@ -47,13 +47,13 @@ const Select = ({ nombre, col, valores, id, desabilitar, valorFormulario }) => {
             {valores.map((elem, index) => {
               if (desabilitar.includes(elem)) {
                 return (
-                  <option disabled value={index} className="fw-bold">
+                  <option disabled value={elem} className="fw-bold">
                     {elem}
                   </option>
                 );
               } else {
                 return (
-                  <option value={index} className="fw-bold">
+                  <option value={elem} className="fw-bold">
                     {elem}
                   </option>
                 );

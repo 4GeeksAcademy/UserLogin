@@ -7,6 +7,7 @@ class User(db.Model):
     __tablename__ = 'user'
     
     id = db.Column(db.Integer, primary_key=True)
+    time = db.Column(db.Integer, nullable=False)
     first_name = db.Column(db.String(120), nullable=False)
     second_name = db.Column(db.String(120), nullable=True)
     imaginary_nickname = db.Column(db.String(120), nullable=True)
@@ -46,6 +47,7 @@ class User(db.Model):
     def serialize(self):
         return {
             "id": self.id,
+            "time": self.time,
             "first_name": self.first_name,
             "second_name": self.second_name,
             "imaginary_nickname": self.imaginary_nickname,

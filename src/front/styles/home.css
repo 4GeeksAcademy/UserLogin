@@ -16,7 +16,7 @@
 }
 .formulario {
   overflow: hidden;
-  background-color: rgb(245, 244, 244);
+  background-color: rgb(245, 244, 244, 0.95);
   border-radius: 20px;
 }
 #boton-subir {

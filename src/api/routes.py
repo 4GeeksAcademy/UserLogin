@@ -21,6 +21,7 @@ def handle_hello():
     data = request.get_json()
     try:
         new_user = User(
+            time=data.get('time'),
             first_name=data.get('firstName'),
             second_name=data.get('secondName'),
             imaginary_nickname=data.get('imaginaryNickname'),
