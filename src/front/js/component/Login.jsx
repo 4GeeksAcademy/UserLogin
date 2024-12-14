@@ -15,16 +15,16 @@ const Login = () => {
   ) : (
     <div className="py-3">
       <Toaster richColors position="top-right" />
-      <h1 className="text-center borde-oscuro  text-dark fw-bold m-3">
+      <h1 className="text-center borde-oscuro  text-white fw-bold m-3">
         <span
-          className="elemento-transicion-home text-white"
+          className="elemento-transicion-home text-info"
           onClick={() => {
             setRegister(true);
           }}
         >
-          Register /
+          Register
         </span>{" "}
-        Login
+        / Login
       </h1>
       <div className="container formulario borde-luz w-75 py-0 p-0">
         <div className="row p-3" id="ejemplo">
@@ -50,7 +50,7 @@ const Login = () => {
           />
           <Input
             nombre="Second Name"
-            col={modoFacil === true ? "col-12" : "col-md-6 col-12"}
+            col={modoFacil === true ? "d-none" : "col-md-6 col-12"}
             id="secondName"
             type="text"
             valorFormulario="secondName"
@@ -78,7 +78,7 @@ const Login = () => {
           />
           <Input
             nombre="Password "
-            col={modoFacil === true ? "col-12" : "col-md-6 col-12"}
+            col={modoFacil === true ? "d-none" : "col-md-6 col-12"}
             id="password"
             type="password"
             valorFormulario="password"
@@ -289,7 +289,13 @@ const Login = () => {
             valorFormulario="timeToComplete"
           />
         </div>
-        <button className="w-100" id="boton-subir">
+        <button
+          className="w-100"
+          id="boton-subir"
+          onClick={() => {
+            actions.Login(store.mail, store.firstName);
+          }}
+        >
           Login
         </button>
       </div>

@@ -1,4 +1,5 @@
 from flask_jwt_extended import JWTManager
+from flask_jwt_extended import create_access_token
 
 
 """
@@ -60,12 +61,26 @@ def handle_hello():
         )
         db.session.add(new_user)
         db.session.commit()
-        
 
         return jsonify(new_user.serialize()), 201    
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
+
+@api.route("/token", methods=["POST"])
+def create_token():
+    first_name = request.json.get("first_name", None)
+    mail = request.json.get("mail", None)
+
+    # Consulta la base de datos por el nombre de usuario y la contraseña
+    user = User.query.filter_by(mail=mail, first_name=first_name).first()
+
+    if user is None:
+        # el usuario no se encontró en la base de datos
+        return jsonify({"msg": "Bad username or password"}), 401
     
+    # Crea un nuevo token con el id de usuario dentro
+    access_token = create_access_token(identity=user.id)
+    return jsonify({ "token": access_token, "user_id": user.id })
 
 

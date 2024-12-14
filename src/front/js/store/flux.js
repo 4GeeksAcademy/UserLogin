@@ -3,7 +3,7 @@ import { toast } from "sonner";
 const getState = ({ getStore, getActions, setStore }) => {
   return {
     store: {
-      tiempo: 0,
+      time: 0,
       firstName: "",
       secondName: "",
       imaginaryNickname: "",
@@ -38,15 +38,13 @@ const getState = ({ getStore, getActions, setStore }) => {
       timeToComplete: "",
     },
     actions: {
-      // Use getActions to call a function within a fuction
-
       Tiempo: () => {
         const store = getStore();
-        if (store.tiempo != 0) {
+        if (store.time != 0) {
         } else {
           const intervalo = setInterval(() => {
             const currentStore = getStore();
-            setStore({ ...currentStore, tiempo: currentStore.tiempo + 1 });
+            setStore({ ...currentStore, time: currentStore.time + 1 });
           }, 1000);
         }
       },
@@ -56,12 +54,28 @@ const getState = ({ getStore, getActions, setStore }) => {
       },
 
       AgregarUsuario: async () => {
-        datos = await request.json();
+        try {
+          console.log(getStore());
+          const respuesta = await fetch(
+            "https://scaling-tribble-69g4p5x9xv79c7j6-3001.app.github.dev/api/addUser",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(getStore()),
+            }
+          );
 
-        respuesta = await fetch(
-          "https://scaling-tribble-69g4p5x9xv79c7j6-3001.app.github.dev/api/addUser",
-          { method: "POST", body: JSON.stringify(datos) }
-        );
+          if (!respuesta.ok) {
+            throw new Error(`Error: :( )`);
+          }
+
+          const resultado = await respuesta.json();
+          console.log("Usuario agregado con éxito:", resultado);
+        } catch (error) {
+          console.error("Error al agregar usuario:", error);
+        }
       },
 
       agregarLocalStorage: () => {
@@ -70,11 +84,38 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
 
+      Login: async (mail, firstName) => {
+        const resp = await fetch(process.env.BACKEND_URL + `api/token`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            first_name: firstName,
+            mail: mail,
+          }),
+        });
+        // {
+        //   first_name: firstName,
+        //   mail: mail,
+        // }
+        // if (!resp.ok) throw Error("There was a problem in the login request");
+
+        // if (resp.status === 401) {
+        //   throw "Invalid credentials";
+        // } else if (resp.status === 400) {
+        //   throw "Invalid email or password format";
+        // }
+        const data = await resp.json();
+
+        localStorage.setItem("jwt-token", data.token);
+
+        return console.log("hola");
+      },
+
       validarFormulario: (pagina) => {
         for (const key in getStore()) {
           if (
             getStore()[key] === "" ||
-            getStore()[key] === "tiempo" ||
+            getStore()[key] === "time" ||
             getStore()[key] === 0 ||
             getStore()[key] === null ||
             getStore()[key] === undefined ||
@@ -99,6 +140,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                           label: "YES",
                           onClick: () => {
                             pagina("/User");
+                            getActions().AgregarUsuario();
                             getActions().agregarLocalStorage();
                           },
                         },

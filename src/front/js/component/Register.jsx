@@ -21,15 +21,15 @@ const Register = () => {
   ) : (
     <div className="py-3">
       <Toaster richColors position="top-right" />
-      <h1 className="text-center borde-oscuro text-dark fw-bold m-3">
-        Register{" "}
+      <h1 className="text-center borde-oscuro text-white fw-bold m-3">
+        Register /{" "}
         <span
-          className="elemento-transicion-home text-white"
+          className="elemento-transicion-home text-info"
           onClick={() => {
             setLogin(true);
           }}
         >
-          / Login
+          Login
         </span>
       </h1>
       <div className="container formulario borde-luz w-75 py-0 p-0">

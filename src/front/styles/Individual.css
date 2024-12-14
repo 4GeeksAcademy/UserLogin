@@ -2,7 +2,7 @@
   font-weight: 900;
   color: white;
   font-size: 150px;
-  text-shadow: 0 0 10px white;
+  text-shadow: 0 0 10px rgb(255, 255, 255);
 }
 .fondo-item-lista {
   overflow: hidden;

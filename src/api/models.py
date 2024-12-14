@@ -32,7 +32,7 @@ class User(db.Model):
     honest_experience_rate = db.Column(db.String(10), default="1")
     potential_password = db.Column(db.String(80), nullable=True)
     favorite_number = db.Column(db.Integer, default=0)
-    love_for_var = db.Column(db.String(10), default="1")
+    love_for_var = db.Column(db.String(30), default="10")
     fetch_preference = db.Column(db.String(50), default="Await")
     mode_preference = db.Column(db.String(50), default="Dark mode")
     programming_without_fingers = db.Column(db.String(120), nullable=True)
