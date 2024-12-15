@@ -7,10 +7,10 @@ const Lista = () => {
         {Object.entries(localStorage).map(([key, value]) => {
           return (
             <div className="row">
-              <div className="col-3 text-center fondo-item-lista fondo-key contenido-item-lista text-white border border-white border-end-0 my-1">
+              <div className="col-3 text-center fondo-item-lista fondo-key contenido-item-lista text-white border border-white border-end-0 my-1 align-content-center">
                 {key}
               </div>
-              <div className="col-9 text-center fondo-item-lista fondo-value contenido-item-lista border border-dark border-start-0  my-1">
+              <div className="col-9 text-center fondo-item-lista fondo-value contenido-item-lista border border-dark border-start-0  my-1 scroll py-1">
                 {value}
               </div>
             </div>

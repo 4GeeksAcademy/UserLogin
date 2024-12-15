@@ -4,11 +4,13 @@ import Select from "./Select.jsx";
 import { Toaster, toast } from "sonner";
 import { Context } from "../store/appContext.js";
 import Register from "./Register.jsx";
+import { useNavigate } from "react-router-dom";
 
 const Login = () => {
   const [register, setRegister] = useState(false);
   const { store, actions } = useContext(Context);
   const [modoFacil, setModoFacil] = useState(false);
+  const navigate = useNavigate();
 
   return register === true ? ( // comprobamos si el usuario no ha cambiado a register
     <Register />
@@ -293,7 +295,7 @@ const Login = () => {
           className="w-100"
           id="boton-subir"
           onClick={() => {
-            actions.Login(store.mail, store.firstName);
+            actions.Login(navigate);
           }}
         >
           Login

@@ -4,6 +4,7 @@ import { Context } from "../store/appContext";
 
 const Select = ({ nombre, col, valores, id, desabilitar, valorFormulario }) => {
   const SelectRef = useRef(null);
+  const [equipo, setEquipo] = useState(false);
   const [select, SetSelect] = useState("");
   const { store, actions } = useContext(Context);
 
@@ -17,6 +18,9 @@ const Select = ({ nombre, col, valores, id, desabilitar, valorFormulario }) => {
   }, []);
 
   const handleSelect = (e) => {
+    if (nombre == "Which is the worst football team?" && e.target.value != "") {
+      setEquipo(true);
+    }
     SetSelect(e.target.value);
     if (e.target.value == "") {
       // si esta vacio lo mantenemos con luz roja
@@ -34,7 +38,9 @@ const Select = ({ nombre, col, valores, id, desabilitar, valorFormulario }) => {
   return (
     <div className={col} id={id}>
       <div className="text-center">
-        <label className="text-dark fw-bold my-2">{nombre}</label>
+        <label className="text-dark fw-bold my-2">
+          {equipo === false ? nombre : "Which is the best football team?"}
+        </label>
         <div class="input-group mb-3 text-center fw-bold text-dark">
           <select
             ref={SelectRef}

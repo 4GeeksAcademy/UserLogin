@@ -55,9 +55,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
       AgregarUsuario: async () => {
         try {
-          console.log(getStore());
           const respuesta = await fetch(
-            "https://scaling-tribble-69g4p5x9xv79c7j6-3001.app.github.dev/api/addUser",
+            process.env.BACKEND_URL + "api/addUser",
             {
               method: "POST",
               headers: {
@@ -84,47 +83,53 @@ const getState = ({ getStore, getActions, setStore }) => {
         });
       },
 
-      Login: async (mail, firstName) => {
+      Login: async (pagina) => {
         const resp = await fetch(process.env.BACKEND_URL + `api/token`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
-            first_name: firstName,
-            mail: mail,
+            first_name: getStore().firstName,
+            mail: getStore().mail,
           }),
         });
-        // {
-        //   first_name: firstName,
-        //   mail: mail,
-        // }
-        // if (!resp.ok) throw Error("There was a problem in the login request");
 
-        // if (resp.status === 401) {
-        //   throw "Invalid credentials";
-        // } else if (resp.status === 400) {
-        //   throw "Invalid email or password format";
-        // }
+        if (!resp.ok) throw Error("There was a problem in the login request");
+
+        if (resp.status === 401) {
+          throw "Invalid credentials";
+        } else if (resp.status === 400) {
+          throw "Invalid email or password format";
+        }
         const data = await resp.json();
 
-        localStorage.setItem("jwt-token", data.token);
-
-        return console.log("hola");
+        if (localStorage.length === 0) {
+          Object.entries(data.user).map(([key, value]) => {
+            localStorage.setItem(key, value);
+          });
+          localStorage.setItem("token", data.token);
+        }
+        return pagina("/User");
+      },
+      encriptarPassword: async (password) => {
+        const salt = await bcrypt.genSalt(10); // Generar una sal
+        const hashedPassword = await bcrypt.hash(password, salt); // Encriptar la contraseña
+        return hashedPassword;
       },
 
       validarFormulario: (pagina) => {
-        for (const key in getStore()) {
-          if (
-            getStore()[key] === "" ||
-            getStore()[key] === "time" ||
-            getStore()[key] === 0 ||
-            getStore()[key] === null ||
-            getStore()[key] === undefined ||
-            getStore()[key] === "---"
-          ) {
-            toast.error(`El campo ${key} no ha sido rellenado correctamente`);
-            return key;
-          }
-        }
+        // for (const key in getStore()) {
+        //   if (
+        //     getStore()[key] === "" ||
+        //     getStore()[key] === "time" ||
+        //     getStore()[key] === 0 ||
+        //     getStore()[key] === null ||
+        //     getStore()[key] === undefined ||
+        //     getStore()[key] === "---"
+        //   ) {
+        //     toast.error(`El campo ${key} no ha sido rellenado correctamente`);
+        //     return key;
+        //   }
+        // }
         return toast(
           "Congratulations, you have completed everything. Are you sure you want to continue?",
           {
@@ -152,18 +157,6 @@ const getState = ({ getStore, getActions, setStore }) => {
         );
       },
 
-      getMessage: async () => {
-        try {
-          // fetching data from the backend
-          const resp = await fetch(process.env.BACKEND_URL + "/api/hello");
-          const data = await resp.json();
-          setStore({ message: data.message });
-          // don't forget to return something, that is how the async resolves
-          return data;
-        } catch (error) {
-          console.log("Error loading message from backend", error);
-        }
-      },
       changeColor: (index, color) => {
         //get the store
         const store = getStore();

@@ -19,3 +19,17 @@
 .fondo-value {
   background-color: rgb(245, 244, 244, 0.85);
 }
+
+.scroll {
+  overflow-x: scroll;
+  white-space: nowrap;
+}
+.scroll::-webkit-scrollbar {
+  background: none;
+  border-radius: 10px;
+  height: 0px;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: transparent;
+}

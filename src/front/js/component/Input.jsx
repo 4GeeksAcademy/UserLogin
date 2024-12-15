@@ -35,8 +35,6 @@ const Input = ({ nombre, col, id, type, valorFormulario }) => {
     if (nombre === "Guess the number from 1 to 10 randomly") {
       const numeroUsuario = parseInt(e.target.value, 10);
       const randomNumber = Math.floor(Math.random() * 10) + 1;
-      console.log(String(numeroUsuario).length);
-      console.log(String(randomNumber).length, randomNumber);
       if (numeroUsuario === randomNumber) {
         InputRef.current.disabled = true;
         setTimeout(() => {
@@ -53,7 +51,7 @@ const Input = ({ nombre, col, id, type, valorFormulario }) => {
           InputRef.current.disabled = false;
         }, 500);
         AgregarBordeInvalido();
-        toast.warning(`It was the number ${randomNumber} ...  Try again`);
+        toast.warning(`Try again`);
       }
     }
     // validamos si el valor esta vacio
@@ -147,6 +145,7 @@ const Input = ({ nombre, col, id, type, valorFormulario }) => {
         <label className="text-dark fw-bold my-2">{nombre}</label>
         <div class="input-group mb-3">
           <input
+            maxlength="100"
             ref={InputRef}
             type={type}
             class="form-control text-center fw-bold rounded-2"

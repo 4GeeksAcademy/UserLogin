@@ -22,7 +22,11 @@ const Layout = () => {
         <ScrollToTop>
           <Routes>
             <Route element={<Home />} path="/" />
-            <Route element={<Individual />} path="/User" />
+            {localStorage.getItem("token") === null ? (
+              ""
+            ) : (
+              <Route element={<Individual />} path="/User" />
+            )}
             <Route element={<h1>Not found!</h1>} />
           </Routes>
         </ScrollToTop>

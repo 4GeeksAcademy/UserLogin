@@ -11,10 +11,8 @@ from api.utils import generate_sitemap, APIException
 from flask_cors import CORS
 
 api = Blueprint('api', __name__)
-
 # Allow CORS requests to this API
 CORS(api)
-
 @api.route('/Users')
 def getUsers():
     Users = User.query.all()
@@ -72,6 +70,7 @@ def create_token():
     first_name = request.json.get("first_name", None)
     mail = request.json.get("mail", None)
 
+
     # Consulta la base de datos por el nombre de usuario y la contraseña
     user = User.query.filter_by(mail=mail, first_name=first_name).first()
 
@@ -80,7 +79,43 @@ def create_token():
         return jsonify({"msg": "Bad username or password"}), 401
     
     # Crea un nuevo token con el id de usuario dentro
-    access_token = create_access_token(identity=user.id)
-    return jsonify({ "token": access_token, "user_id": user.id })
-
+    # access_token = create_access_token(identity=user.id)
+    return jsonify({
+    "token": "dpoaskjiofjdsaiojfdioasj",
+    "user": {
+        "id": user.id,
+        "time": user.time,
+        "first_name": user.first_name,
+        "second_name": user.second_name,
+        "imaginary_nickname": user.imaginary_nickname,
+        "favorite_superhero": user.favorite_superhero,
+        "favorite_villain": user.favorite_villain,
+        "eye_color": user.eye_color,
+        "hair_color": user.hair_color,
+        "mail": user.mail,
+        "age": user.age,
+        "favorite_variable": user.favorite_variable,
+        "experience_rate": user.experience_rate,
+        "phone": user.phone,
+        "favorite_colour": user.favorite_colour,
+        "birth_day": user.birth_day,
+        "computer_name": user.computer_name,
+        "hated_variable": user.hated_variable,
+        "tabs_spaces_chaos": user.tabs_spaces_chaos,
+        "bug_type": user.bug_type,
+        "apologized_to_computer": user.apologized_to_computer,
+        "form_summary": user.form_summary,
+        "honest_experience_rate": user.honest_experience_rate,
+        "potential_password": user.potential_password,
+        "favorite_number": user.favorite_number,
+        "love_for_var": user.love_for_var,
+        "fetch_preference": user.fetch_preference,
+        "mode_preference": user.mode_preference,
+        "programming_without_fingers": user.programming_without_fingers,
+        "favorite_day": user.favorite_day,
+        "random_guess": user.random_guess,
+        "worst_football_team": user.worst_football_team,
+        "time_to_complete": user.time_to_complete
+    }
+})
 

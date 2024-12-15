@@ -4,7 +4,7 @@ const Time = () => {
   return (
     <div>
       <span className="Numero-Tiempo">
-        {localStorage.getItem("tiempo")}
+        {localStorage.getItem("time")}
         <span className="fs-1">s</span>
       </span>
       <div className="container bg-white rounded-3 opacity-75">

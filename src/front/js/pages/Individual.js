@@ -7,7 +7,6 @@ import Lista from "../component/Individual/Lista.jsx";
 export const Individual = () => {
   const { store, actions } = useContext(Context);
 
-  console.log(store);
   return (
     <div className="fondo text-center">
       <Time />
