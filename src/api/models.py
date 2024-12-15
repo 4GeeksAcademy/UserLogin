@@ -38,7 +38,7 @@ class User(db.Model):
     programming_without_fingers = db.Column(db.String(120), nullable=True)
     favorite_day = db.Column(db.String(120), nullable=True)
     random_guess = db.Column(db.String(20), nullable=True)
-    worst_football_team = db.Column(db.String(10), default="Sevilla")
+    best_football_team = db.Column(db.String(10), default="Sevilla")
     time_to_complete = db.Column(db.String(10), default="1min")
 
     def __repr__(self):
@@ -77,6 +77,6 @@ class User(db.Model):
             "programming_without_fingers": self.programming_without_fingers,
             "favorite_day": self.favorite_day,
             "random_guess": self.random_guess,
-            "worst_football_team": self.worst_football_team,
+            "best_football_team": self.best_football_team,
             "time_to_complete": self.time_to_complete,
         }

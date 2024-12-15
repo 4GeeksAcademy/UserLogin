@@ -54,7 +54,7 @@ def handle_hello():
             programming_without_fingers=data.get('programmingWithoutFingers'),
             favorite_day=data.get('favoriteDay'),
             random_guess=data.get('randomGuess'),
-            worst_football_team=data.get('worstFootballTeam', "Sevilla"),
+            best_football_team=data.get('worstFootballTeam', "Sevilla"),
             time_to_complete=data.get('timeToComplete', "5min")
         )
         db.session.add(new_user)
@@ -114,7 +114,7 @@ def create_token():
         "programming_without_fingers": user.programming_without_fingers,
         "favorite_day": user.favorite_day,
         "random_guess": user.random_guess,
-        "worst_football_team": user.worst_football_team,
+        "best_football_team": user.best_football_team,
         "time_to_complete": user.time_to_complete
     }
 })

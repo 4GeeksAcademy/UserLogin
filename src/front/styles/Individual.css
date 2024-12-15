@@ -33,3 +33,18 @@
 .scroll::-webkit-scrollbar-thumb {
   background-color: transparent;
 }
+
+.btn-logout {
+  margin: 0 0 5px 0;
+  color: aqua;
+  height: 70px;
+  font-size: 30px;
+  font-weight: 900;
+  background-color: rgba(255, 255, 255, 0.464);
+}
+.btn-logout:hover {
+  border-bottom: 2px solid aqua;
+  text-shadow: 0 0 13px rgba(155, 255, 243, 0.7);
+  color: aqua;
+  background-color: rgba(255, 255, 255, 0.8);
+}

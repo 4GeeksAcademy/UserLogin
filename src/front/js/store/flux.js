@@ -71,7 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
 
           const resultado = await respuesta.json();
-          console.log("Usuario agregado con éxito:", resultado);
+          return "success";
         } catch (error) {
           console.error("Error al agregar usuario:", error);
         }
@@ -110,26 +110,21 @@ const getState = ({ getStore, getActions, setStore }) => {
         }
         return pagina("/User");
       },
-      encriptarPassword: async (password) => {
-        const salt = await bcrypt.genSalt(10); // Generar una sal
-        const hashedPassword = await bcrypt.hash(password, salt); // Encriptar la contraseña
-        return hashedPassword;
-      },
 
       validarFormulario: (pagina) => {
-        // for (const key in getStore()) {
-        //   if (
-        //     getStore()[key] === "" ||
-        //     getStore()[key] === "time" ||
-        //     getStore()[key] === 0 ||
-        //     getStore()[key] === null ||
-        //     getStore()[key] === undefined ||
-        //     getStore()[key] === "---"
-        //   ) {
-        //     toast.error(`El campo ${key} no ha sido rellenado correctamente`);
-        //     return key;
-        //   }
-        // }
+        for (const key in getStore()) {
+          if (
+            getStore()[key] === "" ||
+            getStore()[key] === "time" ||
+            getStore()[key] === 0 ||
+            getStore()[key] === null ||
+            getStore()[key] === undefined ||
+            getStore()[key] === "---"
+          ) {
+            toast.error(`El campo ${key} no ha sido rellenado correctamente`);
+            return key;
+          }
+        }
         return toast(
           "Congratulations, you have completed everything. Are you sure you want to continue?",
           {
@@ -143,10 +138,19 @@ const getState = ({ getStore, getActions, setStore }) => {
                       toast("sure? :(", {
                         action: {
                           label: "YES",
-                          onClick: () => {
-                            pagina("/User");
-                            getActions().AgregarUsuario();
-                            getActions().agregarLocalStorage();
+                          onClick: async () => {
+                            localStorage.setItem(
+                              "token",
+                              "mdasifhniudsahfuidshai"
+                            );
+                            const respuesta =
+                              await getActions().AgregarUsuario();
+                            if (respuesta === "success") {
+                              await getActions().agregarLocalStorage();
+                              pagina("/User");
+                            } else {
+                              toast.warning("Error");
+                            }
                           },
                         },
                       }),
