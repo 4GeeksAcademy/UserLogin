@@ -59,8 +59,9 @@ def handle_hello():
         )
         db.session.add(new_user)
         db.session.commit()
-
-        return jsonify(new_user.serialize()), 201    
+        
+        access_token = create_access_token(identity=data.get('id'))
+        return jsonify({"token" : access_token}), 201    
     except Exception as e:
         return jsonify({"error": str(e)}), 400
     
@@ -79,9 +80,9 @@ def create_token():
         return jsonify({"msg": "Bad username or password"}), 401
     
     # Crea un nuevo token con el id de usuario dentro
-    # access_token = create_access_token(identity=user.id)
+    access_token = create_access_token(identity=user.id)
     return jsonify({
-    "token": "dpoaskjiofjdsaiojfdioasj",
+    "token": access_token,
     "user": {
         "id": user.id,
         "time": user.time,

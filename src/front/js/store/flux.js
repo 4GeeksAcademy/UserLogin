@@ -71,6 +71,7 @@ const getState = ({ getStore, getActions, setStore }) => {
           }
 
           const resultado = await respuesta.json();
+          localStorage.setItem("token", resultado.token);
           return "success";
         } catch (error) {
           console.error("Error al agregar usuario:", error);
@@ -139,15 +140,13 @@ const getState = ({ getStore, getActions, setStore }) => {
                         action: {
                           label: "YES",
                           onClick: async () => {
-                            localStorage.setItem(
-                              "token",
-                              "mdasifhniudsahfuidshai"
-                            );
                             const respuesta =
                               await getActions().AgregarUsuario();
                             if (respuesta === "success") {
                               await getActions().agregarLocalStorage();
-                              pagina("/User");
+                              setTimeout(() => {
+                                pagina("/User");
+                              }, 500);
                             } else {
                               toast.warning("Error");
                             }
